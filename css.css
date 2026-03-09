@@ -1,166 +1,82 @@
-/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
+/* --- Global Body Fix --- */
+/* 1. Body Setup: This centers the wrapper vertically */
+/* 1. Ensure the body allows the content to breathe */
 body {
-    font-family: 'Courier Prime', monospace; /* Monospaced font for the body text */
-    background-color: #ffffff;
-    color: #000000;
+  background-color: rgb(254, 249, 249);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.pixel-font {
-    font-family: 'VT323', monospace; /* Pixelated font style */
-    text-transform: none;
+/* 2. Adjust the Hero Section to "push" content down */
+.hero-section {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  /* Align to start (top) so we can control the exact gap from the header */
+  align-items: flex-start; 
+  /* This moves the content down. Increase/decrease '12vh' to your liking */
+  padding-top: 12vh;       
+  padding-bottom: 50px;
+  width: 100%;
 }
 
-.logo-text {
-    font-weight: bold;
-    letter-spacing: 2px;
+/* 3. The Content Wrapper keeps everything tight together */
+.hero-content-wrapper {
+  display: flex;
+  align-items: center; /* Keeps image and text vertically aligned to each other */
+  justify-content: center;
+  gap: 60px;
+  max-width: 1100px;
+  width: 90%;
 }
 
-/* Navbar */
-.navbar {
-    background-color: #000;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 10%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* 4. Ensure the image doesn't get too small */
+.photo-container {
+  flex: 0 1 400px;
+  min-width: 300px;
 }
 
-.logo-area {
-    display: flex;
-    align-items: left;
-    gap: 10px;
+.photo-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 80px;
+  /* Subtle shadow to help it pop off the white background */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06); 
 }
 
-.logo-icon { width: 150px; }
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
+/* 5. Text container spacing */
+.text-container {
+  flex: 0 1 500px;
 }
 
-
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: opacity 0.2s ease;
+/* Green Highlight Effect from your Screenshot */
+.highlight {
+  background-color: #DDE7D6; 
+  padding: 0 10px;
+  display: inline;
 }
 
-.nav-links a:hover {
-    opacity: 0.7; /* Gives a nice fade effect when hovered */
-}
-html {
-    scroll-behavior: smooth;
-}
-
-/* Sections */
-.section {
-    min-height: 100vh;
-    display: flex;
+/* --- Mobile Responsiveness --- */
+@media (max-width: 900px) {
+  .hero-content-wrapper {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 10%;
+    gap: 40px;
     text-align: center;
-}
-
-/* Page 1 Specific */
-.hero .hero-image {
-    width: 150px;
-    margin: 30px 0 10px;
-}
-
-.hero h1 {
-    font-size: 5rem;
-    line-height: 1;
-}
-
-/* Page 2 Specific (Grid Layout) */
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: start;
-    text-align: left;
-}
-
-.large { font-size: 3.5rem; margin-bottom: 20px; }
-
-.card-black {
-    background: #000;
-    padding: 20px;
-    border-radius: 25px;
-}
-
-.card-white {
-    background: #fff;
-    padding: 25px;
-    border-radius: 20px;
-    margin-top: 15px;
-}
-
-.white-text { color: #fff; font-size: 2rem; }
-
-.card-white ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-.card-white li { margin-bottom: 15px; }
-
-/* Page 3 Specific */
-.browser-mockup {
-    border: 3px solid #000;
-    border-radius: 30px;
-    overflow: hidden;
-    margin: 30px auto;
-    max-width: 500px;
-}
-
-.browser-mockup img {
-    width: 100%;
-    display: block;
-}
-
-.sub-text { font-size: 0.9rem; margin-top: -10px; }
-
-/* Floating Button */
-.chat-bubble {
-    position: fixed;
-    bottom: 30px;
-    right: 5%;
-    background: #000;
-    color: #fff;
-    padding: 12px 28px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    text-decoration: none;
-    display: flex; /* Centers text inside the pill */
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.chat-bubble:hover {
-    background: #222;
-    transform: translateY(-3px);
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 3rem; }
-    .navbar { padding: 15px 5%; }
+  }
+  
+  .text-container {
+    text-align: center;
+  }
+  
+  .text-container h1 {
+    font-size: 48px;
+  }
 }
